@@ -15,5 +15,6 @@ CLI tool
 in `zshrc/bashrc`
 
 ```shell
-alias 'sr -n'='python3 ~/current-projects/randomizer/randomizer.py --next'
+alias sr='python3 ~/< clone directory >randomizer.py --next'
+alias srm='python3 ~/< clone directory >/randomizer.py --make'
 ```

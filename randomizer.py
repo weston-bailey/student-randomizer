@@ -1,12 +1,13 @@
 import json
 import sys
+import os
 from random import randrange
 
 # script args
 args = sys.argv[1:]
 
 # open students file
-file = open("students.json", "r")
+file = open(os.path.dirname(__file__) + "/students.json", "r")
 students_json = json.load(file)
 
 
@@ -22,7 +23,7 @@ def get_next():
         print(f'{students_json["random"][1].replace("-", " ")} is up next time.')
     del students_json['random'][0]
 
-    with open("students.json", "w") as write_file:
+    with open(os.path.dirname(__file__) + "/students.json", "w") as write_file:
         json.dump(students_json, write_file)
 def print_rand():
     for student in students_json['rand']:
@@ -42,7 +43,7 @@ def make_rand():
     
     # write file with new data
     students_json['random'] = rand_students
-    with open("students.json", "w") as write_file:
+    with open(os.path.dirname(__file__) + "/students.json", "w") as write_file:
         json.dump(students_json, write_file)
 
 switch = {

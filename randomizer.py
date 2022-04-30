@@ -70,3 +70,5 @@ switch = {
 for arg in args:
     if arg in switch:
         switch[arg]()
+
+file.close()

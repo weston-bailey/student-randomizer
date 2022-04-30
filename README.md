@@ -1,6 +1,6 @@
 # Student Randomizer
 
-CLI tool to randomize calling on students in class
+CLI tool to automate randomly calling on students in class
 
 ## Usage
 

@@ -6,9 +6,30 @@ from random import randrange
 # script args
 args = sys.argv[1:]
 
-# open students file
-file = open(os.path.dirname(__file__) + "/students.json", "r")
-students_json = json.load(file)
+# open students file and pull data out as needed
+students_json = {}
+with open(os.path.dirname(__file__) + "/students.json", "r") as file:
+    students_json = json.load(file)
+
+def make_rand():
+    '''
+        generates a new random list of students
+    '''
+    # new list in random order
+    rand_students = []
+    # preserve the list of students 
+    curr_students = students_json['students'].copy()
+    
+    # create a random index, remove from curr_students and add to rand_students
+    while len(curr_students) > 0:
+        rand_index = randrange(0, len(curr_students), 1)
+        rand_students.append(curr_students[rand_index])
+        del curr_students[rand_index]
+    
+    # write file with new data
+    students_json['random'] = rand_students
+    with open(os.path.dirname(__file__) + "/students.json", "w") as write_file:
+        json.dump(students_json, write_file)
 
 def get_next():
     '''
@@ -41,26 +62,6 @@ def print_rand():
     for student in students_json['rand']:
         print(student)
 
-def make_rand():
-    '''
-        generates a new random list of students
-    '''
-    # new list in random order
-    rand_students = []
-    # preserve the list of students 
-    curr_students = students_json['students'].copy()
-    
-    # create a random index, remove from curr_students and add to rand_students
-    while len(curr_students) > 0:
-        rand_index = randrange(0, len(curr_students), 1)
-        rand_students.append(curr_students[rand_index])
-        del curr_students[rand_index]
-    
-    # write file with new data
-    students_json['random'] = rand_students
-    with open(os.path.dirname(__file__) + "/students.json", "w") as write_file:
-        json.dump(students_json, write_file)
-
 switch = {
     '--next': get_next,
     '--make': make_rand,
@@ -70,5 +71,3 @@ switch = {
 for arg in args:
     if arg in switch:
         switch[arg]()
-
-file.close()

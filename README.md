@@ -1,20 +1,20 @@
 # Student Randomizer
 
-CLI tool
+CLI tool to randomize calling on students in class
 
-## Args
+## Usage
 
-`--make`: creates the random list
+`python3 randomizer.py --make`: creates the random list
 
-`--print`: prints list of random students
+`python3 randomizer.py --print`: prints list of random students
 
-`--next`: prints the next student and advances the queue
+`python3 randomizer.py --next`: prints the next student and advances the queue
 
 ## Aliases
 
-in `zshrc/bashrc`
+in `zshrc/bashrc`, add these to run the tool from anywhere.
 
 ```shell
-alias sr='python3 ~/< clone directory >randomizer.py --next'
-alias srm='python3 ~/< clone directory >/randomizer.py --make'
+alias sr='python3 ~/< path to clone directory from root >/randomizer.py --next'
+alias srm='python3 ~/< path to clone directory from root  >/randomizer.py --make'
 ```

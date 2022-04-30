@@ -15,6 +15,8 @@ CLI tool to automate randomly calling on students in class
 in `zshrc/bashrc`, add these to run the tool from anywhere.
 
 ```shell
+# select the next random student
 alias sr='python3 ~/< path to clone directory from root >/randomizer.py --next'
+# reshuffle the randomized students
 alias srm='python3 ~/< path to clone directory from root  >/randomizer.py --make'
 ```

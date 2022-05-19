@@ -19,13 +19,13 @@ def make_rand():
     rand_students = []
     # preserve the list of students 
     curr_students = students_json['students'].copy()
-    
+
     # create a random index, remove from curr_students and add to rand_students
     while len(curr_students) > 0:
         rand_index = randrange(0, len(curr_students), 1)
         rand_students.append(curr_students[rand_index])
         del curr_students[rand_index]
-    
+
     # write file with new data
     students_json['random'] = rand_students
     with open(os.path.dirname(__file__) + "/students.json", "w") as write_file:
@@ -41,7 +41,7 @@ def get_next():
 
     # display whose turn it is
     print(f'{students_json["random"][0].replace("-", " ")} is up now.')
-    
+
     # inform the next student/that the list is empty
     if len(students_json['random']) <= 1:
         print("A new random list will be made next time!")
@@ -62,10 +62,16 @@ def print_rand():
     for student in students_json['rand']:
         print(student)
 
+def list_upcoming():
+    print("upcoming students:")
+    for i, student in enumerate(students_json["random"]):
+        print(f'{i + 1} {student}')
+
 switch = {
     '--next': get_next,
     '--make': make_rand,
-    '--print': print_rand
+    '--print': print_rand,
+    '--list': list_upcoming
 }
 
 for arg in args:

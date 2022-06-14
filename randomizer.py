@@ -10,12 +10,13 @@ class Randomizer:
 
     def __get_students_json(self):
         '''
-            returns the studnets json from file
+            returns the students json from file
         '''
         # open students file and pull data out as needed
         students_json = {}
         with open(os.path.dirname(__file__) + "/students.json", "r") as file:
             students_json = json.load(file)
+
         return students_json
 
     def __write_students_json(self):
@@ -87,19 +88,25 @@ class Randomizer:
 
         return self
 
-    def evaluate_args(self):
-        switch = {
-            '--next': self.get_next,
-            '--make': self.make_rand,
-            '--print': self.print_rand,
-            '--list': self.list_upcoming
-        }
+    def execute_arg(self, arg):
 
+        match arg:
+            case '--next':
+                self.get_next()
+            case '--make':
+                self.make_rand()
+            case '--print':
+                self.print_rand()
+            case '--list':
+                self.list_upcoming()
+            case _:
+                print(f'Invalid script argument: {arg}')
+
+        return self
+
+    def evaluate_args(self):
         for arg in self.args:
-            if arg in switch:
-                switch[arg]()
-            else:
-                print(f'invalid script argument: {arg}')
+            self.execute_arg(arg)
 
         return self
 

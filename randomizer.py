@@ -44,6 +44,8 @@ class Randomizer:
         self.students_json['random'] = rand_students
         self.__write_students_json()
 
+        return self
+
     def get_next(self):
         '''
             prints the new student and advances the random list. if the random list is empty, it will be populated
@@ -67,6 +69,8 @@ class Randomizer:
         # write the new list  
         self.__write_students_json()
 
+        return self
+
     def print_rand(self):
         '''
             print out the students in order
@@ -74,10 +78,14 @@ class Randomizer:
         for student in self.students_json['rand']:
             print(student)
 
+        return self
+
     def list_upcoming(self):
         print("upcoming students:")
         for i, student in enumerate(self.students_json["random"]):
             print(f'{i + 1} {student}')
+
+        return self
 
     def evaluate_args(self):
         switch = {
@@ -90,6 +98,8 @@ class Randomizer:
         for arg in self.args:
             if arg in switch:
                 switch[arg]()
+            else:
+                print(f'invalid script argument: {arg}')
 
         return self
 

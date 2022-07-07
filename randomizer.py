@@ -76,7 +76,7 @@ class Randomizer:
         '''
             print out the students in order
         '''
-        for student in self.students_json['rand']:
+        for student in self.students_json['random']:
             print(student)
 
         return self
@@ -102,10 +102,10 @@ class Randomizer:
         #     case _:
         #         print(f'Invalid script argument: {arg}')
         switch = {
-            '--next': self.get_next(),
-            '--make': self.make_rand(),
-            '--print': self.print_rand(),
-            '--list': self.list_upcoming(),
+            '--next': self.get_next,
+            '--make': self.make_rand,
+            '--print': self.print_rand,
+            '--list': self.list_upcoming,
         }
 
         if arg in switch:

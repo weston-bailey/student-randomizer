@@ -62,7 +62,7 @@ class Randomizer:
         if len(self.students_json['random']) <= 1:
             print("A new random list will be made next time!")
         else:
-            print(f'{self.students_json["random"][1].replace("-", " ")} is up next time.')
+            print(f'{self.students_json["random"][1]} is up next time.')
 
         # remove the person whose turn it is
         del self.students_json['random'][0]

@@ -56,7 +56,7 @@ class Randomizer:
             self.make_rand()
 
         # display whose turn it is
-        print(f'{self.students_json["random"][0].replace("-", " ")} is up now.')
+        print(f'{self.students_json["random"][0]} is up now.')
 
         # inform the next student/that the list is empty
         if len(self.students_json['random']) <= 1:
